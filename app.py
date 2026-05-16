@@ -258,7 +258,7 @@ def main() -> None:
     """Render controls, hydrate session state, show chat history from checkpoints."""
 
     st.set_page_config(page_title="Memory chatbot (LangGraph)", page_icon=None)
-    st.title("Memory-based chatbot")
+    st.title("Sidd's memory-based chatbot")
 
     load_dotenv(override=False)
     missing_key = not (os.getenv("GROQ_API_KEY") or "").strip()
