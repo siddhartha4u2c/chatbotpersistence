@@ -22,7 +22,7 @@ from dotenv import load_dotenv
 from langchain_core.messages import AIMessage, BaseMessage, HumanMessage, SystemMessage
 from langchain_openai import ChatOpenAI
 from langgraph.checkpoint.base import BaseCheckpointSaver
-from langgraph.checkpoint.memory import InMemorySaver
+from langgraph.checkpoint.memory import MemorySaver
 from langgraph.checkpoint.sqlite import SqliteSaver
 from langgraph.graph import START, END, StateGraph
 from langgraph.graph.message import add_messages
@@ -161,7 +161,7 @@ def compile_chatbot(
     Returns ``(compiled_runnable, checkpointer_instance)``. The UI holds the same
     compiled app and rotates ``thread_id`` when the user starts a “new chat”.
     """
-    cp = checkpointer or InMemorySaver()
+    cp = checkpointer or MemorySaver()
     return build_chat_graph(llm=llm).compile(checkpointer=cp), cp
 
 
