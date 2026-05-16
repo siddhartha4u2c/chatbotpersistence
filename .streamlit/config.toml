@@ -1,0 +1,10 @@
+# Sensible defaults for local and cloud (Render, etc.).
+# Do not put secrets here; use environment variables or Streamlit secrets (not committed).
+
+[browser]
+gatherUsageStats = false
+
+[server]
+headless = true
+enableCORS = false
+enableXsrfProtection = true
