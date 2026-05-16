@@ -28,7 +28,7 @@ from graph_app import (
     open_sqlite_checkpointer,
 )
 from langchain_core.messages import HumanMessage
-from langgraph.checkpoint.memory import InMemorySaver
+from langgraph.checkpoint.memory import MemorySaver
 from session_store import (
     checkpoint_db_path,
     disk_persistence_enabled,
@@ -130,7 +130,7 @@ def _init_state() -> None:
             db_path = checkpoint_db_path(profile)
             checkpointer_obj, sqlite_conn = open_sqlite_checkpointer(db_path)
         else:
-            checkpointer_obj = InMemorySaver()
+            checkpointer_obj = MemorySaver()
 
         app, graph_saver = compile_chatbot(checkpointer=checkpointer_obj)
         meta = load_ui_state(ui_state_path(profile)) if use_disk else None
